@@ -26,7 +26,6 @@ resource "aws_autoscaling_group" "app_asg" {
     create_before_destroy = true
   }
   health_check_type    = "ELB"
-  load_balancers = [aws_lb.goji-ecs-alb.id]
   enabled_metrics = [
     "GroupMinSize",
     "GroupMaxSize",
@@ -37,3 +36,4 @@ resource "aws_autoscaling_group" "app_asg" {
   metrics_granularity = "1Minute"
   vpc_zone_identifier  = [aws_subnet.private_subnet_1.id, aws_subnet.private_subnet_2.id]
 }
+
